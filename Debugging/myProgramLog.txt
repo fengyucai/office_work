@@ -1,0 +1,5 @@
+ 2017-01-17 01:19:40,112 - DEBUG - Some debugging details.
+ 2017-01-17 01:19:40,112 - INFO - The logging module is working.
+ 2017-01-17 01:19:40,112 - WARNING - An error message is about to be logged.
+ 2017-01-17 01:19:40,112 - ERROR - An error has occurred.
+ 2017-01-17 01:19:40,112 - CRITICAL - The program is unable to recover.
