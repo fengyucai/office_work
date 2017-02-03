@@ -36,7 +36,7 @@ def anagramSolution3(s1, s2):
     c1 = [0]*26
     c2 = [0]*26
     for i in range(len(s1)):
-        pos = ord(s1[i]) - ord('a')
+        pos = ord(s1[i]) - ord('a')  # return the Unicode code point of character
         c1[pos] += 1
 
     for i in range(len(s2)):
