@@ -4,33 +4,29 @@ def infixToPostfix(infixexpr):
     prec = {}
     prec['*'] = prec['/'] = 3
     prec['+'] = prec['-'] = 2
-    prec['('] = prec[')'] = 1
+    prec['('] = 1
     opstack = Stack()
-    tokenList = infixexpr.split() 
-    outputList = []
-    for token in tokenList:
+    postfixList = []
+    for token in infixexpr:
         if token.isalnum():
-            outputList.append(token)
+            postfixList.append(token)
         elif token == '(':
             opstack.push(token)
         elif token == ')':
-            topToken = opstack.pop()
+            topToken = opstack.pop()  # if top is '(' already popped
             while topToken != '(':
-                outputList.append(topToken)
+                postfixList.append(topToken)
                 topToken = opstack.pop()
         else:
             while not opstack.isEmpty() and\
-                (prec[opstack.peek()] >= prec[token]):
-                outputList.append(opstack.pop())
+                prec[opstack.peek()] >= prec[token]:
+                postfixList.append(opstack.pop())
             opstack.push(token)
 
     while not opstack.isEmpty():
-        outputList.append(opstack.pop())
-    return ' '.join(outputList)
+        postfixList.append(opstack.pop()) 
+    return ''.join(postfixList)
 
-print(infixToPostfix('A * B + C * D'))
-print(infixToPostfix('( A + B ) * C - ( D - E ) * ( F + G )'))
-                
 
-            
-            
+print(infixToPostfix('A+B*C'))
+print(infixToPostfix('(A+B)*C-(D-E)*(F+G)'))
